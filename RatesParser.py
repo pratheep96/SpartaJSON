@@ -14,3 +14,25 @@ class RatesParser():
             return json.load(rates)
 
 rate_reader = RatesParser("exchange_rate.json")
+print(rate_reader.gbp)
+print(rate_reader.aud)
+
+class RatesParser2():
+    def __init__(self, base, date, rates, AUD, GBP):
+        self.base = base
+        self.date = date
+        self.rates = rates
+        self.aud = AUD
+        self.gbp = GBP
+
+def open_json_file(json_file):
+    with open(json_file) as rates:
+        return json.load(rates)
+
+rates_file_2 = open_json_file("exchange_rate.json")
+base = rates_file_2['base']
+date = rates_file_2['date']
+rates = rates_file_2['rates']
+aud = rates['AUD']
+gbp = rates['GBP']
+rates_parser2_obj = RatesParser2
